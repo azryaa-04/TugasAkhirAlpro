@@ -11,13 +11,17 @@ def calculate_frequency(token):
     return hasil
 
 # menghitung dokumen yang mengandung suatu kata
-def calculate_document_frequency(query, stopword):
+def calculate_document_frequency(query, documents):
     hasil = {}
 
     for i in query:
         hasil[i] = 0
-        for k in stopword:
-            if i in k:
+        for k in documents:
+            # k boleh berupa string dokumen atau daftar token.
+            # Bandingkan per token, bukan substring, agar "ai" tidak
+            # ikut terhitung di "main"/"lain".
+            tokens = k.split() if isinstance(k, str) else k
+            if i in tokens:
                 hasil[i] += 1
 
     return hasil
