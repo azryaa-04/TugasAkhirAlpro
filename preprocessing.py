@@ -6,11 +6,11 @@ def case_folding(query):
     hasil = ""
    
     for i in query:
-        if i in ALPHABET:
-            for k in range(26):
-                if i == ALPHABET[k]:
-                    hasil = hasil + alphabet[k]
+        if i in ALPHABET: # Jika hasil perulangan ada di variabel huruf besar maka:
+            for k in range(26): # Perulangan untuk mengakses variabel ALPHABET menggunakan index
+                if i == ALPHABET[k]: # Jika i itu sama dengan HURUF BESAR maka: 
+                    hasil= hasil + alphabet[k] # ganti dengan huruf kecil lalu tambahkan ke hasil
         else:
-            hasil = hasil + i
+            hasil = hasil + i # jika huruf kecil maka langsung tambahkan ke variabel hasil
 
     return hasil
