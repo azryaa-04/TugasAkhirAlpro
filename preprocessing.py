@@ -14,3 +14,17 @@ def case_folding(query):
             hasil = hasil + i # jika huruf kecil maka langsung tambahkan ke variabel hasil
 
     return hasil
+
+def terlarang(kalimat):
+    data = [",",".","?","!","/","-","(", ")"]
+
+    hasil = ""
+    for karakter in kalimat:
+        simbol_ketemu = False
+        for simbol in data :
+            if karakter == simbol:
+            simbol_ketemu = True
+            break
+        if simbol_ketemu == False:
+            hasil = hasil + karakter
+    return hasil
