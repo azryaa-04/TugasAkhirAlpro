@@ -28,3 +28,44 @@ def terlarang(kalimat):
         if simbol_ketemu == False:
             hasil = hasil + karakter
     return hasil
+
+    def stopwords(kalimat):
+        data = ["di","ke","dari","pada","bagi","oleh","daripada","kepada","dan",
+          "atau","tetapi","melainkan","sedangkan","padahal","karena","jika",
+          "maka","sehingga","agar","walaupun","meskipun","saya","aku","kamu",
+          "anda","dia","ia","mereka","kita","kami","ini","itu","yang","pun",
+          "tersebut","adalah","merupakan","yaitu","yakni","ada","berada","jadi",
+          "menjadi","dapat","bisa","boleh","harus","tentu","akan","telah","sedang",
+          "sudah","belum","sempat"
+          ]
+
+        kata_list = []
+        tampung = ""
+    
+        for huruf in kalimat:
+            if huruf == " ":
+                if tampung != "":
+                    kata_list = kata_list + [tampung]
+                    tampung = ""
+            else:
+                tampung = tampung + huruf
+            
+        if tampung != "":
+            kata_list = kata_list + [tampung]
+        
+        hasil_kata = []
+        for kata in kata_list:
+            stopword_ditemukan = False
+            for stopwords in data:
+                if kata == stopwords:
+                    stopword_ditemukan = True
+                    break
+            if stopword_ditemukan == False:
+                hasil_kata = hasil_kata + [kata]
+            
+        gabung = ""
+        pertama = True
+        for kata in hasil_kata:
+                gabung = gabung + " " + kata
+            
+        return gabung
