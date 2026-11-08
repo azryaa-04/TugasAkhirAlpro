@@ -29,8 +29,8 @@ def terlarang(kalimat):
             hasil = hasil + karakter
     return hasil
 
-    def stopwords(kalimat):
-        data = ["di","ke","dari","pada","bagi","oleh","daripada","kepada","dan",
+def stopwords(kalimat):
+    data = ["di","ke","dari","pada","bagi","oleh","daripada","kepada","dan",
           "atau","tetapi","melainkan","sedangkan","padahal","karena","jika",
           "maka","sehingga","agar","walaupun","meskipun","saya","aku","kamu",
           "anda","dia","ia","mereka","kita","kami","ini","itu","yang","pun",
@@ -39,33 +39,33 @@ def terlarang(kalimat):
           "sudah","belum","sempat"
           ]
 
-        kata_list = []
-        tampung = ""
+    kata_list = []
+    tampung = ""
     
-        for huruf in kalimat:
-            if huruf == " ":
-                if tampung != "":
-                    kata_list = kata_list + [tampung]
-                    tampung = ""
-            else:
-                tampung = tampung + huruf
+    for huruf in kalimat:
+        if huruf == " ":
+            if tampung != "":
+                kata_list = kata_list + [tampung]
+                tampung = ""
+        else:
+            tampung = tampung + huruf
             
-        if tampung != "":
-            kata_list = kata_list + [tampung]
+    if tampung != "":
+        kata_list = kata_list + [tampung]
         
-        hasil_kata = []
-        for kata in kata_list:
-            stopword_ditemukan = False
-            for stopwords in data:
-                if kata == stopwords:
-                    stopword_ditemukan = True
-                    break
-            if stopword_ditemukan == False:
-                hasil_kata = hasil_kata + [kata]
+    hasil_kata = []
+    for kata in kata_list:
+        stopword_ditemukan = False
+        for stopwords in data:
+            if kata == stopwords:
+                stopword_ditemukan = True
+                break
+        if stopword_ditemukan == False:
+            hasil_kata = hasil_kata + [kata]
             
-        gabung = ""
-        pertama = True
-        for kata in hasil_kata:
-                gabung = gabung + " " + kata
+    gabung = ""
+    pertama = True
+    for kata in hasil_kata:
+            gabung = gabung + " " + kata
             
-        return gabung
+    return gabung
