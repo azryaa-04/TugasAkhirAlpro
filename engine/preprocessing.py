@@ -29,9 +29,10 @@ def terlarang(kalimat):
                 break
         if simbol_ketemu == False:
             hasil = hasil + karakter
-<<<<<<< HEAD
+
     return hasil
 
+# Menghilangkan kata yang kurang membantu hasil pencarian
 def stopwords(kalimat):
     data = ["di","ke","dari","pada","bagi","oleh","daripada","kepada","dan",
           "atau","tetapi","melainkan","sedangkan","padahal","karena","jika",
