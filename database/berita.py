@@ -373,8 +373,14 @@ berita = [
     },
     {
         "judul": "Kompas.com Laporkan Total 2.295 Kejadian Bencana di Indonesia",
-        "isi": "Versi bahasa Inggris Kompas.com melaporkan data serupa mengenai total 2.295 kejadian bencana hingga 4 November dengan enam karhutla baru di enam kabupaten.",
+        "isi": "Kompas.com melaporkan data serupa mengenai total 2.295 kejadian bencana hingga 4 November dengan enam karhutla baru di enam kabupaten.",
         "tanggal": "2026-11-04",
         "url": "https://go.kompas.com/read/2026/11/04/193103974/bnpb-records-2295-disaster-incidents-in-indonesia-as-of-november-2-2026-an"
     }
 ]
+
+# berita = [
+#     {"judul": "Pemerintah meningkatkan vaksinasi covid masyarakat"},
+#     {"judul": "vaksin covid membantu meningkatkan kekebalan tubuh"},
+#     {"judul": "pemerintah meningkatkan layanan kesehatan masyarakat"}
+# ]

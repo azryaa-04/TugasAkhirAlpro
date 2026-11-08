@@ -15,18 +15,21 @@ def case_folding(query):
 
     return hasil
 
+# Fungsi menghilang karakter selain huruf
 def terlarang(kalimat):
-    data = [",",".","?","!","/","-","(", ")"]
+    data = [",", ".", "?", "!", "/", "-", "(", ")", "@", "#", "$", "%", "&", "*", "|", "<", ">", "~", "`", "^"]
 
     hasil = ""
+
     for karakter in kalimat:
         simbol_ketemu = False
         for simbol in data :
             if karakter == simbol:
-            simbol_ketemu = True
-            break
+                simbol_ketemu = True
+                break
         if simbol_ketemu == False:
             hasil = hasil + karakter
+<<<<<<< HEAD
     return hasil
 
 def stopwords(kalimat):
