@@ -68,8 +68,23 @@ def stopwords(kalimat):
             hasil_kata = hasil_kata + [kata]
             
     gabung = ""
-    pertama = True
     for kata in hasil_kata:
             gabung = gabung + " " + kata
             
     return gabung
+
+def tokenisasi(kalimat):
+    token = []
+    sementara = ""
+    
+    kalimat_awal = kalimat + " "
+    
+    for karakter in kalimat_awal:
+        if karakter != " ":
+            sementara = sementara + karakter
+        else:
+            if sementara != "":
+                token =  token +[sementara]
+                sementara = "" 
+                
+    return token

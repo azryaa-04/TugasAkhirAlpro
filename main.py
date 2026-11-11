@@ -1,6 +1,6 @@
 import os
 from engine.funtions import all_berita, length
-from engine.preprocessing import case_folding, terlarang, stopwords
+from engine.preprocessing import case_folding, terlarang, stopwords, tokenisasi
 from engine.tf_idf import calculate_frequency, calculate_document_frequency, calculate_idf, calculate_tfidf
 from database.berita import berita
 
@@ -13,7 +13,7 @@ def preprocessing(query):
     huruf_kecil = case_folding(query)
     karakter_terlarang = terlarang(huruf_kecil)
     kata_stopword = stopwords(karakter_terlarang)
-    token = kata_stopword.split()
+    token = tokenisasi(kata_stopword)
 
     return token
 
@@ -26,6 +26,10 @@ def proses_input_user():
 
 
 header()
-print(proses_input_user())
+query = proses_input_user()
+print(calculate_frequency(query))
 
 
+for i in range(length(berita)):
+    data = preprocessing(berita[i]['judul'])
+    print(calculate_frequency(data))
