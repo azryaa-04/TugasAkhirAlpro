@@ -1,4 +1,6 @@
+import os
 from database.berita import berita
+from engine.preprocessing import case_folding, terlarang, stopwords, tokenisasi
 
 
 # menghitung logaritma natural basis (e) dengan metode deret Taylor 
@@ -22,10 +24,31 @@ def length(x):
 
     return result
 
-def all_berita(dokumen):
+# tahap praproses
+def preprocessing(query):
+    huruf_kecil = case_folding(query)
+    karakter_terlarang = terlarang(huruf_kecil)
+    kata_stopword = stopwords(karakter_terlarang)
+    token = tokenisasi(kata_stopword)
+
+    return token
+
+# header program utama
+def header():
+    os.system("cls")
+    print(f"{'Search Engine Techseek':^40}")
+    print(f"{'-'*40:^40}")
+
+# proses inputan user
+def proses_input_user():
+    search = input("Ask Google Buatan Kami😁😁 \n")
+    return preprocessing(search)
+
+# proses pengolahan berita
+def proses_data_berita():
     lst = []
     for i in range(length(berita)):
-        lst += [i]["judul"]
-        lst += berita[i]["isi"]
-
+        data = berita[i]['judul']
+        lst += preprocessing(data)
+    
     return lst

@@ -380,7 +380,8 @@
 # ]
 
 berita = [
-    {"judul": "Pemerintah meningkatkan vaksinasi covid masyarakat"},
-    {"judul": "vaksin covid membantu meningkatkan kekebalan tubuh"},
-    {"judul": "pemerintah meningkatkan layanan kesehatan masyarakat"}
+    {"judul": "Kualitas air sungai menurun akibat limbah industri"},
+    {"judul": "Laporan AMDAL menunjukkan kualitas air dan udara industri"},
+    {"judul": "Polusi udara meningkat di kawasan industri"},
+    {"judul": "Peraturan pemerintah tentang kelestarian lingkungan"}
 ]

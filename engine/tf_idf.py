@@ -1,6 +1,6 @@
 from database.berita import berita
 from engine.funtions import ln, length
-
+import math
 # menghitung kemunculan kata disebuah dokumen
 def calculate_frequency(query):
     result = {}
@@ -31,9 +31,8 @@ def calculate_idf(dokumen):
     result = {}
     
     for i in dokumen:
-        idf = str(ln(((n + 1) / (dokumen[i] + 1))+ 1)) # mengkonversi hasil fungsi ln() ke string
-        # idf = str(ln((n + 1 / (dokumen[i] + 1))+ 1)) # mengkonversi hasil fungsi ln() ke string
-        result[i] = float(idf[:5]) # mengambil hanya 3 angka dibelakang koma dan jadikan float lagi
+        result[i] = ln(((n) / (dokumen[i]))) # mengkonversi hasil fungsi ln() ke string
+        # result[i] = math.log10(((n ) / (dokumen[i] ))) # mengkonversi hasil fungsi ln() ke string
         
     return result
 
