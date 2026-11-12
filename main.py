@@ -7,7 +7,15 @@ data = proses_data_berita()
 tf = calculate_frequency(query)
 df = calculate_document_frequency(query, data)
 idf = calculate_idf(df)
-print(calculate_tfidf(tf,idf))
+#print(calculate_tfidf(tf,idf))
 
+hasil = calculate_tfidf(tf, idf)
 
+for kata in hasil:
+    print(f"\nKata: {kata}")
 
+    if hasil[kata]:
+        for dokumen in hasil[kata]:
+            print(f"  {dokumen}: {hasil[kata][dokumen]}")
+    else:
+        print("  Tidak ditemukan")

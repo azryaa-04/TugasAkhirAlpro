@@ -1,5 +1,5 @@
 from database.berita import berita
-from engine.funtions import ln, length
+from engine.funtions import ln, length, preprocessing
 import math
 # menghitung kemunculan kata disebuah dokumen
 def calculate_frequency(query):
@@ -31,16 +31,27 @@ def calculate_idf(dokumen):
     result = {}
     
     for i in dokumen:
-        result[i] = ln(((n) / (dokumen[i]))) # mengkonversi hasil fungsi ln() ke string
+        result[i] = ln(((n) / (dokumen[i]+1))) # mengkonversi hasil fungsi ln() ke string
         # result[i] = math.log10(((n ) / (dokumen[i] ))) # mengkonversi hasil fungsi ln() ke string
         
     return result
 
-# Menghitung bobot kata
+# Menghitung bobot TF-IDF setiap kata pada setiap berita
 def calculate_tfidf(tf, idf):
     result = {}
 
-    for i in tf:
-        result[i] = tf[i] * idf[i] # Menghitung hasil dari calculate_tf dan calculate_idf
+    for kata in tf:
+        result[kata] = {}
+
+        for i in range(length(berita)):
+            dokumen = berita[i]['judul'] + " " + berita[i]['isi']
+            token = preprocessing(dokumen)
+
+            tf_dokumen = calculate_frequency(token)
+
+            if kata in tf_dokumen:
+                result[kata][f"Berita ke-{i+1}"] = (
+                    tf_dokumen[kata] * idf[kata]
+                )
 
     return result
