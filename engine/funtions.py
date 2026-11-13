@@ -1,5 +1,5 @@
 import os
-from database.berita import berita
+from database.berita import berita, test
 from engine.preprocessing import case_folding, terlarang, stopwords, tokenisasi
 
 
@@ -47,8 +47,11 @@ def proses_input_user():
 # proses pengolahan berita
 def proses_data_berita():
     lst = []
-    for i in range(length(berita)):
-        data = berita[i]['judul']
-        lst += preprocessing(data)
+    for i in berita:
+        data = {
+            'id': i['id'],
+            'token': preprocessing(i['isi'])
+        }
+        lst += [data]
     
     return lst

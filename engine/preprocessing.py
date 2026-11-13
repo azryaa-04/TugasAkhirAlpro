@@ -17,7 +17,13 @@ def case_folding(query):
 
 # Fungsi menghilang karakter selain huruf
 def terlarang(kalimat):
-    data = [",", ".", "?", "!", "/", "-", "(", ")", "@", "#", "$", "%", "&", "*", "|", "<", ">", "~", "`", "^"]
+    data = [
+    ".", ",", "!", "?", ";", ":", "'", '"',
+    "(", ")", "[", "]", "{", "}",
+    "-", "_", "/", "\\", "|",
+    "@", "#", "$", "%", "^", "&",
+    "*", "+", "=", "~", "`",
+    "<", ">", "\n", "\t"]
 
     hasil = ""
 
@@ -34,14 +40,20 @@ def terlarang(kalimat):
 
 # Menghilangkan kata yang kurang membantu hasil pencarian
 def stopwords(kalimat):
-    data = ["di","ke","dari","pada","bagi","oleh","daripada","kepada","dan",
-          "atau","tetapi","melainkan","sedangkan","padahal","karena","jika",
-          "maka","sehingga","agar","walaupun","meskipun","saya","aku","kamu",
-          "anda","dia","ia","mereka","kita","kami","ini","itu","yang","pun",
-          "tersebut","adalah","merupakan","yaitu","yakni","ada","berada","jadi",
-          "menjadi","dapat","bisa","boleh","harus","tentu","akan","telah","sedang",
-          "sudah","belum","sempat"
-          ]
+    data = [
+    "yang", "dan", "di", "ke", "dari", "ini", "itu",
+    "dengan", "untuk", "pada", "dalam", "oleh", "karena",
+    "sebagai", "adalah", "akan", "telah", "sudah", "belum",
+    "dapat", "bisa", "juga", "atau", "tetapi", "namun",
+    "agar", "hingga", "sampai", "serta", "antara",
+    "setelah", "sebelum", "ketika", "saat", "jika",
+    "maka", "bagi", "para", "lebih", "sangat", "hanya",
+    "masih", "lagi", "pun", "tidak", "bukan", "ada",
+    "jadi", "yakni", "yaitu", "tersebut", "setiap",
+    "beberapa", "semua", "seluruh", "suatu", "sebuah",
+    "menjadi", "terhadap", "melalui", "menurut", "sejak",
+    "sejumlah", "sekitar", "termasuk", "resmi", "guna",
+    "mencatat", "menyebutkan", "melaporkan"]
 
     kata_list = []
     tampung = ""
