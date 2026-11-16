@@ -33,8 +33,10 @@ def calculate_idf(dokumen):
     result = {}
     
     for i in dokumen:
-        result[i] = math.log10((n / dokumen[i])) # mengkonversi hasil fungsi ln() ke string
-        # result[i] = math.log10(((n ) / (dokumen[i] ))) # mengkonversi hasil fungsi ln() ke string
+        if dokumen[i] != 0:
+            result[i] = ln((n / dokumen[i])) # mengkonversi hasil fungsi ln() ke string
+        else:
+            result[i] =0
         
     return result
 

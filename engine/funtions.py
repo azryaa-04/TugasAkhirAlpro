@@ -34,10 +34,24 @@ def preprocessing(query):
     return token
 
 # header program utama
+
 def header():
     os.system("cls")
-    print(f"{'Search Engine Techseek':^40}")
-    print(f"{'-'*40:^40}")
+
+    lebar = 50
+
+    print("\033[96m")
+    print("╔" + "═" * (lebar - 2) + "╗")
+    print("║" + "akhirnya sekesai jugaa".center(lebar - 2) + "║")
+    print("║" + "INDONESIAN DISASTER NEWS SEARCH".center(lebar - 2) + "║")
+    print("╚" + "═" * (lebar - 2) + "╝")
+
+    print("© ubai x lyra".center(lebar))
+    # print("\033[0m")
+    print()
+    print("Jangan cari yang gak ada".center(lebar))
+    print()
+
 
 # proses inputan user
 def proses_input_user():
@@ -55,3 +69,39 @@ def proses_data_berita():
         lst += [data]
     
     return lst
+
+# pengurutan berita
+def bubble_sort(lst):
+        data = lst
+        l = length(data)
+
+        for i in range(l-1):
+            ok = True
+            for j in range(l-1-i):
+                if data[j]['score'] < data[j + 1]['score']:
+                    data[j], data[j + 1] = data[j + 1], data[j]
+                    ok = False
+            if ok:
+                break 
+        return data
+
+# menampilkan hasil ke layar
+def result_bm25(lst):
+        no_hasil = 0
+        for i in range(3):
+            index = lst[i]['id']
+            if lst[i]['score'] > 0:
+                print(berita[index - 1]['judul'])
+                print(berita[index - 1]['isi'])
+                print(berita[index - 1]['tanggal'])
+                print(berita[index - 1]['url'])
+                print(f"Score: {lst[i]['score']}")
+                print()
+                print()
+            else:
+                no_hasil += 1
+
+        if no_hasil == 3:
+            print(f"{'Tidak Ada Hasil':^40}")
+            print()
+            print()

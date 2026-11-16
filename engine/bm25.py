@@ -50,6 +50,8 @@ def scoreBM25(query, dokumen, df):
     score = 0
     for i in idf:
         score += idf[i] * ( tf[i] * (k1 + 1) ) / ( tf[i] + K )
-    result[dokumen['id']] = score
+        
+    result['id'] = dokumen['id']
+    result['score'] = score
 
     return result
