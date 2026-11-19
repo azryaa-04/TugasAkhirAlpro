@@ -1,3 +1,4 @@
+from engine.cosine import print_skor_cosine
 from engine.funtions import  bubble_sort, header, length, proses_input_user, proses_data_berita, result_bm25
 from engine.tf_idf import calculate_frequency, calculate_document_frequency, calculate_idf, calculate_tfidf
 from engine.bm25 import avgdl, idf_bm25, scoreBM25, tf_bm25
@@ -27,6 +28,15 @@ while True:
 
     # menampilkan hasil
     result_bm25(rangking)
+
+
+
+# cosine similarity
+    print("\n" + "="*40)
+    print("       HASIL SKORING COSINE SIMILARITY")
+    print("="*40)
+    
+    print_skor_cosine(query)
 
     # kondisi lanjut or no
     print('Apakah ada yang mau ditanyakan lagi?')
