@@ -1,5 +1,5 @@
 from engine.funtions import length, ln, proses_data_berita
-from database.berita import test, berita
+from database.berita import berita
 
 
 def avgdl():
@@ -25,6 +25,18 @@ def tf_bm25(query, dokumen):
         result[i] = 0 # Menambahkan key kedalam dictionary dengan value awal 0
         for k in dokumen:
             if i in k: # Lalu menambahkan 1 ke value jika key nya ada di berita
+                result[i] += 1
+
+    return result
+
+# menghitung dokumen yang mengandung suatu kata / df
+def df_bm25(query, dokumen):
+    result = {}
+
+    for i in query:
+        result[i] = 0 # Menambahkan key kedalam dictionary dengan value awal 0
+        for k in dokumen:
+            if i in k['token']: # Lalu menambahkan 1 ke value jika key nya ada di berita
                 result[i] += 1
 
     return result

@@ -1,9 +1,9 @@
-from engine.cosine import print_skor_cosine
+from engine.cosine import df_cosine, idf_cosine, score_cosine
 from engine.funtions import  bubble_sort, header, length, proses_input_user, proses_data_berita, result_bm25
-from engine.tf_idf import calculate_frequency, calculate_document_frequency, calculate_idf, calculate_tfidf
-from engine.bm25 import avgdl, idf_bm25, scoreBM25, tf_bm25
-from database.berita import test, berita
+from engine.bm25 import df_bm25, scoreBM25
+from database.berita import berita
 from engine.preprocessing import case_folding
+
 
 
 while True:
@@ -17,8 +17,36 @@ while True:
     # proses data berita
     data = proses_data_berita()
 
+# =================================================================================
+
+    # cosine similarity
+    
+    print("\n" + "="*40)
+    print("       HASIL SKORING COSINE SIMILARITY")
+    print("="*40)
+
+    # proses mencari relevansi berita
+    df = df_cosine()
+    idf = idf_cosine(df)
+    hasil_cosine = []
+    for i in range(length(berita)):
+        hasil_cosine += [score_cosine(query, data[i], idf)]
+
+    # mengurutkan hasil
+    rangking = bubble_sort(hasil_cosine)
+    
+    # menampilkan hasil
+    result_bm25(rangking)
+
+# =================================================================================
+
     # bm25
-    df = calculate_document_frequency(query, data)
+    print("\n" + "="*40)
+    print("          HASIL SKORING BM25")
+    print("="*40)
+
+    # proses mencari relevansi berita
+    df = df_bm25(query, data)
     lst = []
     for i in range(length(berita)):
         lst += [scoreBM25(query, data[i], df)]
@@ -29,36 +57,11 @@ while True:
     # menampilkan hasil
     result_bm25(rangking)
 
-
-
-# cosine similarity
-    print("\n" + "="*40)
-    print("       HASIL SKORING COSINE SIMILARITY")
-    print("="*40)
-    
-    print_skor_cosine(query)
+# =================================================================================
 
     # kondisi lanjut or no
     print('Apakah ada yang mau ditanyakan lagi?')
-    print("ketik 'Keluar' untuk berhenti")
+    print("Lanjut cari lagi kah bang? (y/n)")
     kondisi = input()
-    if case_folding(kondisi) == 'keluar':
+    if case_folding(kondisi) == 'n':
         break
-
-
-
-
-
-
-
-
-
-# hasil = calculate_tfidf(tf, idf)
-# for kata in hasil:
-#     print(f"\nKata: {kata}")
-
-#     if hasil[kata]:
-#         for dokumen in hasil[kata]:
-#             print(f"  {dokumen}: {hasil[kata][dokumen]}")
-#     else:
-#         print("  Tidak ditemukan")
